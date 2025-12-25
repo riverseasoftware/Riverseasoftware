@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>River Sea Software</title>
+</head>
+<body style="text-align:center; font-family:sans-serif; padding: 20px; background-color: #f4f4f4;">
+    <div style="max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <h1 style="color:#1a2a6c;">River Sea Software</h1>
+        <p>Software Access: <strong>$25.00</strong></p>
+        <script src="https://www.paypal.com/sdk/js?client-id=AfL6Z6njAFamOqS-aZLVI5MEB-rMv9G_4JF-lHfkK22fcCOk0Q4mfEecgaJL_yv3zHToY6mgwLqrsFkY&currency=USD"></script>
+        <div id="paypal-button-container"></div>
+    </div>
+    <script>
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{ amount: { value: '25.00' } }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Payment Successful!');
+            });
+        }
+    }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
